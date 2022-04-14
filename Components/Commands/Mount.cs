@@ -23,7 +23,7 @@ public static class Mount
         Internal.OpenProcess("rclone.exe",
                              $"mount \"{remoteName}\" * --volname \"{volName}\" --vfs-cache-mode full --network-mode",
                              wait: true,
-                             useShellExe: false,
+                             useShell: false,
                              asAdmin: IsAdministrator());
 
         // No need of ManualResetEvent.

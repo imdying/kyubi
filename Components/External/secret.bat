@@ -7,7 +7,7 @@ if [%1] == [] (
 )
 
 if [%2] == [] (
-    %exec% aes app.txt %1 true false
+    %exec% aes %1 app.txt false
 ) else (
-    %exec% aes %2 %1 true false
+    %exec% aes %1 %2 false
 )

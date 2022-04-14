@@ -3,14 +3,6 @@ namespace V.Components;
 
 public static class Internal
 {
-    public static void ExitIf(bool condition, int code = 0)
-    {
-        if (condition)
-            Environment.Exit(code);
-        else
-            return;
-    }
-
     public static void Echo(string str, Action action)
     {
         WriteLine(str);
@@ -39,14 +31,28 @@ public static class Internal
         ExitIf(exit);
     }
 
-    internal static void OpenProcess(string file, string? args, bool wait = false, bool useShellExe = false, bool asAdmin = false, bool isHidden = false, string? workdir = null)
+    public static void ExitIf(bool condition, int code = 0)
+    {
+        if (condition)
+            Environment.Exit(code);
+        else
+            return;
+    }
+
+    internal static void OpenProcess(string file,
+                                     string? args,
+                                     bool wait = false,
+                                     bool useShell = false,
+                                     bool asAdmin = false,
+                                     bool isHidden = false,
+                                     string? workdir = null)
     {
         using (var _process = new Process())
         {
             var StartInfo = new ProcessStartInfo()
             {
                 Verb = asAdmin ? "runas" : null,
-                UseShellExecute = useShellExe,
+                UseShellExecute = useShell,
                 FileName = file,
                 WindowStyle = isHidden ? ProcessWindowStyle.Hidden : ProcessWindowStyle.Normal,
                 Arguments = args
