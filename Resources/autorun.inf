@@ -1,0 +1,5 @@
+[Autorun]
+Icon=app.ico
+Label=Kyubi Key
+ShellExecute=kyubi.exe
+UseAutoPlay=1
